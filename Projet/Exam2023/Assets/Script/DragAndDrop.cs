@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     private bool firstTime = true;
-    [SerializeField] private GameObject Content;
+    public GameObject Content;
 
     // Fonction appelée lorsque l'objet est en train d'être déplacé
     public void OnDrag(PointerEventData eventData)
@@ -47,6 +47,9 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
         }
         // Réactive le HorizontalLayoutGroup du Content
         Content.GetComponent<HorizontalLayoutGroup>().enabled = true;
+        
+        // Redimensionne le Content
+        Content.GetComponent<TailleContent>().ResizeContent();
     }
 
     // Fonction pour déplacer l'objet deux niveaux plus haut dans la hiérarchie des objets

@@ -28,6 +28,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
         if (RectTransformUtility.RectangleContainsScreenPoint(contentRect, eventData.position))
         {
             transform.SetParent(Content.transform);
+            firstTime = true;
         }
     }
 

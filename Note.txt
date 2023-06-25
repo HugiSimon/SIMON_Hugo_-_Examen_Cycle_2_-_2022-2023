@@ -1,0 +1,21 @@
+Jeu tour par tour 2D vue du dessus 
+
+Utiliser le python pour faire les lignes de codes
+
+Commencer par écrire des instructions de bases pour battre les ennemies
+Gagner de l'expérience et des crédits
+On peut tomber sur un shop pour améliorer les lignes de codes ou les acheters
+
+Liste de commande
+-Avancer
+-Tourner
+-Tire long (Va plus loin, et est très précis)
+-Tire court (Est plus court, mais fait 1/4 de cercle et touche plusieurs ennemies)
+-Fraper
+
+-Boucle
+-Condition
+
+-Detect ennemie
+-Detect wall
+-Detect trou

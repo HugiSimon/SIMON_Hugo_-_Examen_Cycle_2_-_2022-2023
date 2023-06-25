@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe39abc5953ce5c4f869829e1863049a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topAndBottomMargin: 12
+  topAndBottomMargin: 8
   leftAndRightMargin: 18
 --- !u!114 &7461020190521090793
 MonoBehaviour:
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Content: {fileID: 0}
+  ContentCode: {fileID: 0}
 --- !u!61 &7461020190521090794
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Content: {fileID: 0}
   ContentCode: {fileID: 0}
+  MainParent: {fileID: 0}
 --- !u!61 &7461020190521090794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -237,7 +238,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#2667ca>joueur<color=white>.<color=#dcdc8b>avancer
+  m_text: <color=#dcdc8b>joueur<color=white>.<color=#7cdcf0>avancer<color=white>(   
+    )
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

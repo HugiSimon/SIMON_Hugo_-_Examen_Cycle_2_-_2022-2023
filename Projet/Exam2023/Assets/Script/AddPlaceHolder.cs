@@ -75,7 +75,7 @@ public void RemoveEmptyPlaceHolders()
         AddPlaceHolders(placeHolders);
     }
     
-    private List<Transform> GetPlaceHolders()
+    public List<Transform> GetPlaceHolders()
     {
         // Récupère tous les enfants de l'objet
         Transform[] children = GetComponentsInChildren<Transform>();

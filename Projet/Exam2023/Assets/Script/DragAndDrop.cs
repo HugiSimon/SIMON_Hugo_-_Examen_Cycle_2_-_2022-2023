@@ -56,6 +56,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
                     transform.SetParent(collider.transform);
                     transform.position = collider.transform.position + new Vector3(GetComponent<RectTransform>().sizeDelta.x / 2f, 0f, 0f);
                     firstTime = true;
+                    transform.parent.parent.GetComponent<AddPlaceHolder>().AddPlaceHolders();
                     return;
                 }
             }
@@ -66,6 +67,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
         if (RectTransformUtility.RectangleContainsScreenPoint(contentRect, eventData.position))
         {
             transform.SetParent(Content.transform);
+            ContentCode.GetComponent<AddPlaceHolder>().RemoveEmptyPlaceHolders();
             firstTime = true;
         }
         else

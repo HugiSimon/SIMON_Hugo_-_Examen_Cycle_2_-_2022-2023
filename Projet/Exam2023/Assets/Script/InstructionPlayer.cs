@@ -8,6 +8,7 @@ public class InstructionPlayer : MonoBehaviour
     public GameObject code;
     
     private float rotationAngle;
+    public Animator animator;
     
     public void Play()
     {
@@ -33,14 +34,26 @@ public class InstructionPlayer : MonoBehaviour
 
                         for (int i = 0; i < moreInfo; i++)
                         {
-                            transform.LeanMoveLocal(new Vector3(transform.localPosition.x + distanceX, transform.localPosition.y + distanceY, transform.localPosition.z), 1f).setEaseInOutCubic();
+                            animator.SetBool("Walking", true);
+                            transform.LeanMoveLocal(new Vector3(transform.localPosition.x + distanceX, transform.localPosition.y + distanceY, transform.localPosition.z), 1f);
                             Debug.Log("avancer");
                             yield return new WaitForSeconds(1f);
                         }
+                        animator.SetBool("Walking", false);
                         break;
                     case "tourner":
                         yield return new WaitForSeconds(0.5f);
+                        
                         rotationAngle += moreInfo;
+                        if (rotationAngle > 180)
+                        {
+                            rotationAngle -= 360;
+                        } else if (rotationAngle < -180)
+                        {
+                            rotationAngle += 360;
+                        }
+                        animator.SetFloat("Rotation", rotationAngle);
+                        
                         Debug.Log("tourner");
                         yield return new WaitForSeconds(0.5f);
                         break;

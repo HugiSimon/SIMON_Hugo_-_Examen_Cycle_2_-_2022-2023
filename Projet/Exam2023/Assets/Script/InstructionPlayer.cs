@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InstructionPlayer : MonoBehaviour
 {
@@ -16,6 +18,13 @@ public class InstructionPlayer : MonoBehaviour
 
     public bool StopByLevel = false;
 
+    public GameObject Button;
+
+    private void Start()
+    {
+        transform.localPosition = new Vector3(-0.796f, -0.48f);
+    }
+
     public void Play()
     {
         List<Transform> listInstruction = code.GetComponent<AddPlaceHolder>().GetPlaceHolders();
@@ -24,6 +33,7 @@ public class InstructionPlayer : MonoBehaviour
 
     private IEnumerator PlayCoroutine(List<Transform> listInstruction)
     {
+        Button.GetComponent<Button>().interactable = false;
         foreach (Transform instruction in listInstruction)
         {
             if (instruction.childCount != 0 && !StopByLevel)
@@ -54,6 +64,7 @@ public class InstructionPlayer : MonoBehaviour
                 }
             }
         }
+        Button.GetComponent<Button>().interactable = true;
     }
 
     private IEnumerator Avancer(int distance)
@@ -66,7 +77,6 @@ public class InstructionPlayer : MonoBehaviour
         {
             if (!StopByLevel)
             {
-                Debug.Log("avancer");
                 animator.SetBool("Walking", true);
                 transform.LeanMoveLocal(
                     new Vector3(transform.localPosition.x + distanceX, transform.localPosition.y + distanceY,
@@ -79,7 +89,6 @@ public class InstructionPlayer : MonoBehaviour
 
     private IEnumerator Tourner(int angle)
     {
-        Debug.Log("tourner");
         yield return new WaitForSeconds(0.5f);
 
         rotationAngle += angle;
@@ -98,7 +107,6 @@ public class InstructionPlayer : MonoBehaviour
 
     private IEnumerator TireCourt()
     {
-        Debug.Log("tireCourt");
         yield return new WaitForSeconds(0.2f);
         
         animator.SetBool("Shoot", true);
@@ -133,7 +141,6 @@ public class InstructionPlayer : MonoBehaviour
 
     private IEnumerator TireLong()
     {
-        Debug.Log("tireLong");
         yield return new WaitForSeconds(0.2f);
         
         animator.SetBool("Crossbow", true);
@@ -168,7 +175,6 @@ public class InstructionPlayer : MonoBehaviour
 
     private IEnumerator Frappe()
     {  
-        Debug.Log("frappe");
         yield return new WaitForSeconds(0.2f);
         
         animator.SetBool("Stab", true);
@@ -201,12 +207,11 @@ public class InstructionPlayer : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
     }
 
-    // Quand j'appuie sur espace, appelle Play
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Play();
         }
-    }
+    }*/
 }

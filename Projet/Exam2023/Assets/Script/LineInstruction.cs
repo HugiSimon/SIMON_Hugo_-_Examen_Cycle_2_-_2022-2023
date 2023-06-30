@@ -32,4 +32,13 @@ public class LineInstruction : MonoBehaviour
         moreInfo = int.Parse(GetComponentInChildren<TMP_Dropdown>()
             .options[GetComponentInChildren<TMP_Dropdown>().value].text);
     }
+
+    public void UpdateOptionDropdown(string[] listOption)
+    {
+        GetComponentInChildren<TMP_Dropdown>().options.Clear();
+        foreach (var option in listOption)
+        {
+            GetComponentInChildren<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData(option));
+        }
+    }
 }

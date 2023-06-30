@@ -14,6 +14,8 @@ public class InstructionPlayer : MonoBehaviour
     public GameObject tireLong;
     public GameObject frappe;
 
+    public bool StopByLevel = false;
+
     public void Play()
     {
         List<Transform> listInstruction = code.GetComponent<AddPlaceHolder>().GetPlaceHolders();
@@ -24,11 +26,11 @@ public class InstructionPlayer : MonoBehaviour
     {
         foreach (Transform instruction in listInstruction)
         {
-            if (instruction.childCount != 0)
+            if (instruction.childCount != 0 && !StopByLevel)
             {
                 string commande = instruction.GetChild(0).GetComponent<LineInstruction>().GetInstruction();
                 int moreInfo = instruction.GetChild(0).GetComponent<LineInstruction>().GetMoreInfo();
-
+                
                 switch (commande)
                 {
                     case "avancer":
@@ -57,15 +59,20 @@ public class InstructionPlayer : MonoBehaviour
     private IEnumerator Avancer(int distance)
     {
         float radians = rotationAngle * Mathf.Deg2Rad;
-        float distanceX = distance * movementPixel * Mathf.Cos(radians);
-        float distanceY = distance * movementPixel * Mathf.Sin(radians);
+        float distanceX = movementPixel * Mathf.Cos(radians);
+        float distanceY = movementPixel * Mathf.Sin(radians);
 
         for (int i = 0; i < distance; i++)
         {
-            Debug.Log("avancer");
-            animator.SetBool("Walking", true);
-            transform.LeanMoveLocal(new Vector3(transform.localPosition.x + distanceX, transform.localPosition.y + distanceY, transform.localPosition.z), 1f);
-            yield return new WaitForSeconds(1f);
+            if (!StopByLevel)
+            {
+                Debug.Log("avancer");
+                animator.SetBool("Walking", true);
+                transform.LeanMoveLocal(
+                    new Vector3(transform.localPosition.x + distanceX, transform.localPosition.y + distanceY,
+                        transform.localPosition.z), 1f);
+                yield return new WaitForSeconds(1f);
+            }
         }
         animator.SetBool("Walking", false);
     }

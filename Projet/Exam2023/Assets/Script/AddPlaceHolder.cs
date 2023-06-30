@@ -100,4 +100,23 @@ public void RemoveEmptyPlaceHolders()
 
         return placeHolders;
     }
+    
+    public void ResetPlaceHolders()
+    {
+        // Récupère tous les enfants de l'objet
+        Transform[] children = GetComponentsInChildren<Transform>();
+
+        // Détruit tous les enfants qui sont des PlaceHolder
+        foreach (Transform child in children)
+        {
+            if (child.CompareTag("PlaceHolder"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        
+        // Crée un nouveau PlaceHolder
+        GameObject newPlaceHolder = Instantiate(placeHolderPrefab, transform);
+        newPlaceHolder.GetComponent<RectTransform>().localPosition = firstPosition;
+    }
 }

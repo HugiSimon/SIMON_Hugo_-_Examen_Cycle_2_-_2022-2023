@@ -14,7 +14,7 @@ public class DimensionText : MonoBehaviour
     private TextMeshProUGUI textComponent;
     private BoxCollider2D boxCollider;
 
-    private void Awake()
+    public void DelayStart()
     {
         // Récupère les composants nécessaires
         rectTransform = GetComponent<RectTransform>();

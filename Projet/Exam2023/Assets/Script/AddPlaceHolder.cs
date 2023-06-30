@@ -34,8 +34,16 @@ public class AddPlaceHolder : MonoBehaviour
             GameObject newPlaceHolder = Instantiate(placeHolderPrefab, transform);
 
             // Positionne le nouveau PlaceHolder à la fin de la liste des PlaceHolder
-            RectTransform lastPlaceHolder = placeHolders[placeHolders.Count - 1].GetComponent<RectTransform>();
-            newPlaceHolder.GetComponent<RectTransform>().position = new Vector2(lastPlaceHolder.position.x, lastPlaceHolder.position.y - spacing);
+            if (placeHolders.Count > 0)
+            {
+                RectTransform lastPlaceHolder = placeHolders[placeHolders.Count - 1].GetComponent<RectTransform>();
+                newPlaceHolder.GetComponent<RectTransform>().position = new Vector2(lastPlaceHolder.position.x, lastPlaceHolder.position.y - spacing);
+            }
+            else
+            {
+                newPlaceHolder.GetComponent<RectTransform>().localPosition = firstPosition;
+            }
+
         }
     }
 

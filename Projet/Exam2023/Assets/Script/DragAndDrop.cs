@@ -14,6 +14,17 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
 
     public GameObject MainParent;
 
+    public void Intialize(GameObject Content, GameObject ContentCode, GameObject MainParent)
+    {
+        this.Content = Content;
+        this.ContentCode = ContentCode;
+        this.MainParent = MainParent;
+        
+        transform.SetParent(Content.transform);
+        
+        GetComponent<DimensionText>().DelayStart();
+    }
+
     // Fonction appelée lorsque l'objet est en train d'être déplacé
     public void OnDrag(PointerEventData eventData)
     {

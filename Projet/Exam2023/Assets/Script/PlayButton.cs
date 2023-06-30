@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayButton : MonoBehaviour
 {
     public GameObject parentObject;
+    public GameObject Canvas;
 
     void Start()
     {
@@ -14,5 +15,6 @@ public class PlayButton : MonoBehaviour
     public void Play()
     {
         parentObject.SetActive(false);
+        Canvas.GetComponent<LevelManager>().Play();
     }
 }
